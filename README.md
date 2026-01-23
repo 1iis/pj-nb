@@ -142,7 +142,7 @@ p = Project.new(
 **Existing:**
 
 ``` python
-p = Project('mylib')     # [cwd/]'relative/path', or '/absolute/path'
+p = Project('mylib')     # [cwd/]'relative/path' or '/absolute/path'
 ```
 
 **Sync:**
@@ -172,5 +172,7 @@ p.status()               # Git methods forward to p.g
 ```
 
 ------------------------------------------------------------------------
+
+<!-- here be dragons -->
 
 [^1]: Jupyter+Quarto specific QoL to come soon™
