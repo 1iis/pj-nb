@@ -5,12 +5,12 @@
 
 Three methods to create, sync, and release projects:
 
-1.  **`new()`** Create repo on GitHub + local clone. If `nbdev`: add
-    theme toggle, set GH Pages branch.
-2.  **`sync()`** (opt. `nbdev_prepare`) → `commit` → `pull --rebase` →
-    `push`.
-3.  **`ship()`** Version bump → `tag` → GitHub release. If `PyPI=True`:
-    build → upload.
+1.  **`Project.new()`** Create repo on GitHub + local clone. If `nbdev`:
+    add theme toggle, set GH Pages branch.
+2.  **`Project.sync()`** (opt. `nbdev_prepare`) → `commit` →
+    `pull --rebase` → `push`.
+3.  **`Project.ship()`** Version bump → `tag` → GitHub release. If
+    `PyPI=True`: build → upload.
 
 Works with any repo to handle lifecycle with
 [Git](https://git-scm.com/), [GitHub](https://github.com/), and
@@ -104,16 +104,19 @@ upload by default.
 
 ## Utilities
 
-`Project.` public methods: - `ls()` to list files in the project’s
-repo. - `setup_pages()` configures GitHub Pages manually. -
-`dark_theme()` applies dark mode to nbdev docs. - Any unknown method
-forwards to git.
+`Project.` public methods:
+
+- `ls()` to list files in the project’s repo.
+- `setup_pages()` configures GitHub Pages manually.
+- `dark_theme()` applies dark mode to nbdev docs.
+- Any unknown method forwards to git.
 
 ## Troubleshooting
 
 **Path errors**  
 Reassign `p = Project("correct/path")` to fix the current working
-directory (`cwd`).
+directory (`cwd`).  
+Restart kernel first if it still fails.
 
 **Rebase conflicts**  
 `p.g('rebase', '--abort')` to start over, or resolve and continue.
@@ -123,16 +126,30 @@ directory (`cwd`).
 **Create:**
 
 ``` python
-p = Project.new("mylib")                              # Private repo
-p = Project.new("mylib", org="myorg", nbdev=True)     # Org + nbdev + dark theme + Pages
-p = Project.new("mylib", private=False, desc="Cool lib")
+p = Project.new("mylib") # Private repo
+```
+
+``` python
+p = Project.new(
+    "mylib",
+    org="myorg",         # GH Organization
+    desc="Cool lib"      # About
+    private=False,       # Public repository
+    nbdev=True           # nbdev/Quarto GH Pages w. light/dark toggle
+)
+```
+
+**Existing:**
+
+``` python
+p = Project('mylib')     # [cwd/]'relative/path', or '/absolute/path'
 ```
 
 **Sync:**
 
 ``` python
 p.sync()                 # Commit all, rebase, push
-p.sync("Fix bug #42")    # Custom message
+p.sync("Fix bug #42")    # Commit message (default: 'sync')
 ```
 
 **Release:**
@@ -147,6 +164,8 @@ p.ship(dry_run=True)     # Preview without doing anything
 **Utilities:**
 
 ``` python
+p.ls()                   # List files (takes regex str)
+p.ls('nbs')              # List notebooks ('py' for Python files)
 p.setup_pages()          # Configure GitHub Pages manually
 p.dark_theme()           # Apply dark mode to nbdev docs
 p.status()               # Git methods forward to p.g
