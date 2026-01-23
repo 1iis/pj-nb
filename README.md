@@ -27,9 +27,11 @@ API), and [`fastcore`](https://github.com/AnswerDotAI/fastcore/)
 ## Install
 
 This has only been tested in SolveIT, with the `nbs/00_core` dialog. You
-may either: - clone this repo and open `nbs/00_core` (or use
-`pj/core.py`) - download `nbs/00_core` or view the shared dialog, and
-import it to your SolveIT instance.
+may either:
+
+- clone this repo and open `nbs/00_core` (or use `pj/core.py`)
+- download `nbs/00_core` or view the shared dialog, and import it to
+  your SolveIT instance.
 
 More coming very soon.
 
@@ -167,8 +169,8 @@ p.ship(dry_run=True)     # Preview without doing anything
 p.ls()                   # List files (takes regex str)
 p.ls('nbs')              # List notebooks ('py' for Python files)
 p.setup_pages()          # Configure GitHub Pages manually
-p.dark_theme()           # Apply dark mode to nbdev docs
-p.status()               # Git methods forward to p.g
+p.dark_theme()           # Enable Quarto dark mode w. toggle button (nbdev docs)
+p.status()               # Git methods forward to p.g (thus fastgit.Git)
 ```
 
 ------------------------------------------------------------------------
