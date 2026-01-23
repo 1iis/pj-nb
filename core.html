@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Project &amp; friends">
+
+<title>core – pj-py</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-000f0825b9c55ed21d14970d810c14a9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-cd01ec01c313c8dcea9e2653ebc3bd31.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-000f0825b9c55ed21d14970d810c14a9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="core – pj-py">
+<meta property="og:description" content="Project &amp; friends">
+<meta property="og:site_name" content="pj-py">
+<meta name="twitter:title" content="core – pj-py">
+<meta name="twitter:description" content="Project &amp; friends">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">pj-py</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./core.html">core</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pj</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./core.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">core</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_display.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01_display.html</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link active" data-scroll-target="#table-of-contents">Table of contents</a></li>
+  <li><a href="#module-setup" id="toc-module-setup" class="nav-link" data-scroll-target="#module-setup">Module setup</a>
+  <ul class="collapse">
+  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">Imports</a></li>
+  <li><a href="#github-api" id="toc-github-api" class="nav-link" data-scroll-target="#github-api">GitHub API</a></li>
+  <li><a href="#set_api" id="toc-set_api" class="nav-link" data-scroll-target="#set_api">set_api</a></li>
+  <li><a href="#get_api" id="toc-get_api" class="nav-link" data-scroll-target="#get_api">get_api</a></li>
+  <li><a href="#verbosity" id="toc-verbosity" class="nav-link" data-scroll-target="#verbosity">Verbosity</a></li>
+  <li><a href="#set_verbosity" id="toc-set_verbosity" class="nav-link" data-scroll-target="#set_verbosity">set_verbosity</a></li>
+  <li><a href="#solveit-domain" id="toc-solveit-domain" class="nav-link" data-scroll-target="#solveit-domain">SolveIT domain</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output">Output</a></li>
+  <li><a href="#result-1" id="toc-result-1" class="nav-link" data-scroll-target="#result-1">Result</a></li>
+  <li><a href="#lines" id="toc-lines" class="nav-link" data-scroll-target="#lines">Lines</a></li>
+  <li><a href="#filelist" id="toc-filelist" class="nav-link" data-scroll-target="#filelist">FileList</a></li>
+  </ul></li>
+  <li><a href="#class-project" id="toc-class-project" class="nav-link" data-scroll-target="#class-project">Class <code>Project</code></a>
+  <ul class="collapse">
+  <li><a href="#project" id="toc-project" class="nav-link" data-scroll-target="#project">Project</a></li>
+  </ul></li>
+  <li><a href="#project.new" id="toc-project.new" class="nav-link" data-scroll-target="#project.new"><code>Project.new()</code></a>
+  <ul class="collapse">
+  <li><a href="#new" id="toc-new" class="nav-link" data-scroll-target="#new">new</a></li>
+  </ul></li>
+  <li><a href="#project.sync" id="toc-project.sync" class="nav-link" data-scroll-target="#project.sync"><code>Project.sync()</code></a>
+  <ul class="collapse">
+  <li><a href="#project.sync-1" id="toc-project.sync-1" class="nav-link" data-scroll-target="#project.sync-1">Project.sync</a></li>
+  </ul></li>
+  <li><a href="#project.ship" id="toc-project.ship" class="nav-link" data-scroll-target="#project.ship"><code>Project.ship()</code></a>
+  <ul class="collapse">
+  <li><a href="#project.ship-1" id="toc-project.ship-1" class="nav-link" data-scroll-target="#project.ship-1">Project.ship</a></li>
+  </ul></li>
+  <li><a href="#project.ls" id="toc-project.ls" class="nav-link" data-scroll-target="#project.ls"><code>Project.ls()</code></a>
+  <ul class="collapse">
+  <li><a href="#project.ls-1" id="toc-project.ls-1" class="nav-link" data-scroll-target="#project.ls-1">Project.ls</a></li>
+  </ul></li>
+  <li><a href="#helpers" id="toc-helpers" class="nav-link" data-scroll-target="#helpers">Helpers</a>
+  <ul class="collapse">
+  <li><a href="#magic-methods" id="toc-magic-methods" class="nav-link" data-scroll-target="#magic-methods">Magic methods</a></li>
+  <li><a href="#detection" id="toc-detection" class="nav-link" data-scroll-target="#detection">Detection</a></li>
+  <li><a href="#solveit_url" id="toc-solveit_url" class="nav-link" data-scroll-target="#solveit_url">solveit_url</a></li>
+  <li><a href="#version" id="toc-version" class="nav-link" data-scroll-target="#version">Version</a></li>
+  <li><a href="#gh-pages-branch-select" id="toc-gh-pages-branch-select" class="nav-link" data-scroll-target="#gh-pages-branch-select">GH Pages branch select</a></li>
+  <li><a href="#project.setup_pages" id="toc-project.setup_pages" class="nav-link" data-scroll-target="#project.setup_pages">Project.setup_pages</a></li>
+  <li><a href="#quarto-darklight" id="toc-quarto-darklight" class="nav-link" data-scroll-target="#quarto-darklight">Quarto <code>dark</code>|<code>light</code></a></li>
+  <li><a href="#project.dark_theme" id="toc-project.dark_theme" class="nav-link" data-scroll-target="#project.dark_theme">Project.dark_theme</a></li>
+  </ul></li>
+  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo">TODO</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/1iis/pj/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="core.html.md"><i class="bi bi-file-code"></i>CommonMark</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">core</h1>
+</div>
+
+<div>
+  <div class="description">
+    <code>Project</code> &amp; friends
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<section id="table-of-contents" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-contents">Table of contents</h2>
+<p><code>_fbf3cf89</code> <a href="#module-setup"><strong>Module setup</strong></a><br>
+<code>_1d82f33e</code> - <a href="#imports">Imports</a><br>
+<code>_aa5fa7c7</code> - <a href="#github-api">GitHub API</a><br>
+<code>_d476a2e5</code> - <a href="#verbosity">Verbosity</a><br>
+<code>_1d1c6a8c</code> - <a href="#solveit-domain">SolveIT domain</a><br>
+<code>_b5d7fcb4</code> - <a href="#output">Output</a><br>
+<code>_2d4d75ba</code> – <a href="#result">[<code>Result</code>](https://1iis.github.io/pj/core.html#result)</a><br>
+<code>_50f813c0</code> – <a href="#linesl"><code>Lines(L)</code></a><br>
+<code>_efbdf781</code> – <a href="#filelistlines"><code>FileList(Lines)</code></a><br>
+<code>_0db6a50a</code> <a href="#class-project"><strong>Class [<code>Project</code>](https://1iis.github.io/pj/core.html#project)</strong></a><br>
+<code>_b93d1a6a</code> <a href="#projectnew"><strong><code>Project.new()</code></strong></a><br>
+<code>_a17b0188</code> <a href="#projectsync"><strong>[<code>Project.sync()</code>](https://1iis.github.io/pj/core.html#project.sync)</strong></a><br>
+<code>_f9c8ed1e</code> <a href="#projectship"><strong>[<code>Project.ship()</code>](https://1iis.github.io/pj/core.html#project.ship)</strong></a><br>
+<code>_0ecb7e6e</code> <a href="#projectls"><strong>[<code>Project.ls()</code>](https://1iis.github.io/pj/core.html#project.ls)</strong></a><br>
+<code>_e908abfe</code> <a href="#helpers"><strong>Helpers</strong></a><br>
+<code>_9d5246cf</code> - <a href="#magic-methods">Magic methods</a><br>
+<code>_9e719823</code> – <a href="#__getattr__"><code>__getattr__</code></a><br>
+<code>_fd836d45</code> – <a href="#__dir__"><code>__dir__</code></a><br>
+<code>_6c8717a7</code> – <a href="#_repr_markdown_"><code>_repr_markdown_</code></a><br>
+<code>_480bb662</code> - <a href="#detection">Detection</a><br>
+<code>_65aba5ea</code> – <a href="#owner-repo">Owner, repo</a><br>
+<code>_846e8d38</code> – <a href="#project-type">Project type</a><br>
+<code>_bf0c525a</code> – <a href="#solveit-url">SolveIT URL</a><br>
+<code>_1c555637</code> - <a href="#version">Version</a><br>
+<code>_671c0239</code> - <a href="#gh-pages-branch-select">GH Pages branch select</a><br>
+<code>_a84a675d</code> - <a href="#quarto-darklight">Quarto <code>dark</code>|<code>light</code></a><br>
+<code>_294a4299</code> <a href="#todo"><strong>TODO</strong></a></p>
+<p>See also: <a href="https://1iis.github.io/pj/">README</a>, <a href="">beginner help</a>.</p>
+</section>
+<section id="module-setup" class="level2">
+<h2 class="anchored" data-anchor-id="module-setup">Module setup</h2>
+<section id="imports" class="level3">
+<h3 class="anchored" data-anchor-id="imports">Imports</h3>
+</section>
+<section id="github-api" class="level3">
+<h3 class="anchored" data-anchor-id="github-api">GitHub API</h3>
+<p>Module-level <code>_default_api</code>: call <code>set_api(GhApi())</code> once; it’s shared by all <a href="https://1iis.github.io/pj/core.html#project"><code>Project</code></a> instances.</p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L22" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="set_api" class="level3">
+<h3 class="anchored" data-anchor-id="set_api">set_api</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_api(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    api:ghapi.core.GhApi <span class="op">|</span> <span class="va">None</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Set the default GhApi instance for all Project instances.</em></p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L27" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_api" class="level3">
+<h3 class="anchored" data-anchor-id="get_api">get_api</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_api(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>ghapi.core.GhApi <span class="op">|</span> <span class="va">None</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Get the current default GhApi instance.</em></p>
+</section>
+<section id="verbosity" class="level3">
+<h3 class="anchored" data-anchor-id="verbosity">Verbosity</h3>
+<p>Set verbosity once per dialog: <code>0</code>=quiet, <code>1</code>=normal (default), <code>2</code>=verbose.</p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L33" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="set_verbosity" class="level3">
+<h3 class="anchored" data-anchor-id="set_verbosity">set_verbosity</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_verbosity(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    v:<span class="bu">int</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="solveit-domain" class="level3">
+<h3 class="anchored" data-anchor-id="solveit-domain">SolveIT domain</h3>
+<p>Cached at import for building file browser URLs.</p>
+</section>
+<section id="output" class="level3">
+<h3 class="anchored" data-anchor-id="output">Output</h3>
+<section id="result" class="level4">
+<h4 class="anchored" data-anchor-id="result"><a href="https://1iis.github.io/pj/core.html#result"><code>Result</code></a></h4>
+Methods return a <a href="https://1iis.github.io/pj/core.html#result"><code>Result</code></a> instance wrapping the value. - Value is “<strong>stdout</strong>”, composable. - Display is “<strong>stderr</strong>” (<code>_repr_markdown_</code>): human status, notebook-friendly. -
+<details>
+<summary>
+To ease composition, <code>Result.__getattr__</code> forwards to <code>.val</code>.
+</summary>
+<p>
+<code>Result</code> is invisible: <code>Project.new(“foo”).sync()</code> chains naturally.
+</p>
+</details>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L39" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+</section>
+<section id="result-1" class="level3">
+<h3 class="anchored" data-anchor-id="result-1">Result</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Result(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    val, ok:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span>, msg:<span class="bu">str</span><span class="op">=</span><span class="st">''</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Initialize self. See help(type(self)) for accurate signature.</em></p>
+<section id="linesl" class="level4">
+<h4 class="anchored" data-anchor-id="linesl"><code>Lines(L)</code></h4>
+<p>Base class for pretty list output. Inherits from <code>L</code> for composition; <code>_repr_markdown_</code> joins items as lines.</p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L50" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+</section>
+<section id="lines" class="level3">
+<h3 class="anchored" data-anchor-id="lines">Lines</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Lines(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    items:NoneType<span class="op">=</span><span class="va">None</span>, rest:VAR_POSITIONAL, use_list:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, match:NoneType<span class="op">=</span><span class="va">None</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>L subclass with markdown repr that joins lines.</em></p>
+<section id="filelistlines" class="level4">
+<h4 class="anchored" data-anchor-id="filelistlines"><code>FileList(Lines)</code></h4>
+<p>Returned by <code>ls()</code>. Inherits from <code>L</code> so it’s iterable, indexable, and composable (<code>for f in pj.ls()</code>, <code>.filter()</code>, etc.), while <code>_repr_markdown_</code> provides rich notebook display with SolveIT links for notebooks.</p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L57" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+</section>
+<section id="filelist" class="level3">
+<h3 class="anchored" data-anchor-id="filelist">FileList</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> FileList(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    items, base_path, domain:NoneType<span class="op">=</span><span class="va">None</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>L subclass with markdown repr that joins lines.</em></p>
+</section>
+</section>
+<section id="class-project" class="level2">
+<h2 class="anchored" data-anchor-id="class-project">Class <a href="https://1iis.github.io/pj/core.html#project"><code>Project</code></a></h2>
+<p>Each <a href="https://1iis.github.io/pj/core.html#project"><code>Project</code></a> instance represents a repository. Auto-detects owner and repo from the git remote URL. If set, <code>org</code> overrides owner.</p>
+<blockquote class="blockquote">
+<p>[!TIP] Existing projects are loaded by instanciating the class with a path (<code>p = Project('path/to/repo')</code>).<br>
+New ones should be created with <code>p = Project.new()</code>.</p>
+<p>Both return a <a href="https://1iis.github.io/pj/core.html#project"><code>Project</code></a> ready to use.</p>
+</blockquote>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L72" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="project" class="level3">
+<h3 class="anchored" data-anchor-id="project">Project</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Project(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    path:<span class="bu">str</span> <span class="op">|</span> pathlib.Path, api:ghapi.core.GhApi <span class="op">|</span> <span class="va">None</span><span class="op">=</span><span class="va">None</span>, org:<span class="bu">str</span> <span class="op">|</span> <span class="va">None</span><span class="op">=</span><span class="va">None</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Manage a project’s lifecycle: init, sync, ship.</em></p>
+</section>
+</section>
+<section id="project.new" class="level2">
+<h2 class="anchored" data-anchor-id="project.new"><code>Project.new()</code></h2>
+<p>Creates everything from scratch: GitHub repo via API, local clone, nbdev hooks installed. If <code>nbdev=True</code>, runs scaffolding and applies dark theme. Initial commit, push, and Pages setup.</p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L84" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="new" class="level3">
+<h3 class="anchored" data-anchor-id="new">new</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> new(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    cls, name:<span class="bu">str</span>, <span class="co"># Repository name</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    path:<span class="bu">str</span> <span class="op">|</span> pathlib.Path <span class="op">|</span> <span class="va">None</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Local path (defaults to ./name)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    api:ghapi.core.GhApi <span class="op">|</span> <span class="va">None</span><span class="op">=</span><span class="va">None</span>, <span class="co"># GitHub API instance</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    org:<span class="bu">str</span> <span class="op">|</span> <span class="va">None</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Organization (overrides authenticated user)</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    desc:<span class="bu">str</span> <span class="op">|</span> <span class="va">None</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Repository description</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    private:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span>, <span class="co"># Create private repository</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    nbdev:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Initialize as nbdev project</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>Project:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Create a new GitHub repo, clone it, and return a Project instance.</em></p>
+</section>
+</section>
+<section id="project.sync" class="level2">
+<h2 class="anchored" data-anchor-id="project.sync"><a href="https://1iis.github.io/pj/core.html#project.sync"><code>Project.sync()</code></a></h2>
+<p><code>nbdev_prepare</code> first for notebooks, then Git <code>add</code> all, <code>commit</code>, <code>pull --rebase</code>, and <code>push</code>.<br>
+We use <code>rebase</code> for a clean, linear log (no merge commit) whenever there’s no conflict (e.g.&nbsp;one may edit different files on different hosts, and commit all later).</p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L125" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="project.sync-1" class="level3">
+<h3 class="anchored" data-anchor-id="project.sync-1">Project.sync</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sync(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    msg:<span class="bu">str</span><span class="op">=</span><span class="st">'sync'</span>, <span class="co"># Git commit message</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>Result:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Commit all, pull –rebase, push. Runs nbdev_prepare if nbdev project.</em></p>
+</section>
+</section>
+<section id="project.ship" class="level2">
+<h2 class="anchored" data-anchor-id="project.ship"><a href="https://1iis.github.io/pj/core.html#project.ship"><code>Project.ship()</code></a></h2>
+<p>Full release cycle, auto-detecting strategy by project type. Won’t ship with uncommitted changes unless <code>force=True</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 27%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Project Type</th>
+<th>Version Bump</th>
+<th>Build &amp; Upload</th>
+<th>Tag &amp; Release</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>nbdev</strong></td>
+<td><code>nbdev_bump_version</code></td>
+<td><code>nbdev_pypi</code></td>
+<td>git tag + <code>ghapi</code></td>
+</tr>
+<tr class="even">
+<td><strong>python</strong></td>
+<td>manual in <code>pyproject.toml</code></td>
+<td><code>build</code> + <code>twine</code></td>
+<td>git tag + <code>ghapi</code></td>
+</tr>
+<tr class="odd">
+<td><strong>other</strong></td>
+<td>n/a</td>
+<td>n/a</td>
+<td>git tag + <code>ghapi</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L138" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="project.ship-1" class="level3">
+<h3 class="anchored" data-anchor-id="project.ship-1">Project.ship</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ship(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    part:<span class="bu">int</span><span class="op">=</span><span class="dv">2</span>, <span class="co"># Version part to bump: 0=major, 1=minor, 2=patch</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    dry_run:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Show what would happen without executing</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    force:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Ship even with uncommitted changes</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    pypi:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Upload to PyPI</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    quiet:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Suppress build output</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>Result:</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Bump version, build, upload to PyPI, tag, and create GitHub release.</em></p>
+</section>
+</section>
+<section id="project.ls" class="level2">
+<h2 class="anchored" data-anchor-id="project.ls"><a href="https://1iis.github.io/pj/core.html#project.ls"><code>Project.ls()</code></a></h2>
+<p>List repo files with smart defaults. Shortcuts: <code>'nbs'</code>, <code>'py'</code>; or pass regex. Notebooks get SolveIT links.</p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L178" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="project.ls-1" class="level3">
+<h3 class="anchored" data-anchor-id="project.ls-1">Project.ls</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ls(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    pattern:<span class="bu">str</span><span class="op">=</span><span class="st">''</span>, <span class="co"># Shortcut ('nbs', 'py') or regex</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    exclude:<span class="bu">list</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Paths to exclude</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>FileList:</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>List files in repo, optionally filtered. Returns FileList.</em></p>
+</section>
+</section>
+<section id="helpers" class="level2">
+<h2 class="anchored" data-anchor-id="helpers">Helpers</h2>
+<section id="magic-methods" class="level3">
+<h3 class="anchored" data-anchor-id="magic-methods">Magic methods</h3>
+<section id="getattr__" class="level4">
+<h4 class="anchored" data-anchor-id="getattr__"><code>__getattr__</code></h4>
+<p>Forward unknown method calls to <code>self.g</code> (the <code>Git</code> instance), so <code>p.status()</code> is <code>p.g.status()</code> (i.e.&nbsp;<code>git status</code>).</p>
+</section>
+<section id="dir__" class="level4">
+<h4 class="anchored" data-anchor-id="dir__"><code>__dir__</code></h4>
+<p>Extend tab-completion to include <code>Git</code> methods. Without this, the editor wouldn’t know <code>p.status</code> exists.</p>
+</section>
+<section id="repr_markdown_" class="level4">
+<h4 class="anchored" data-anchor-id="repr_markdown_"><code>_repr_markdown_</code></h4>
+<p>Called by Jupyter/SolveIT when displaying an object: return a markdown string showing project info.</p>
+</section>
+</section>
+<section id="detection" class="level3">
+<h3 class="anchored" data-anchor-id="detection">Detection</h3>
+<section id="owner-repo" class="level4">
+<h4 class="anchored" data-anchor-id="owner-repo">Owner, repo</h4>
+<p><code>_parse_remote()</code> extracts <code>(owner, repo)</code> from the git remote URL, handling both HTTPS and SSH formats.</p>
+</section>
+<section id="project-type" class="level4">
+<h4 class="anchored" data-anchor-id="project-type">Project type</h4>
+<p><code>_detect_type()</code> checks which config files exist: <code>settings.ini</code> means nbdev, <code>pyproject.toml</code> means standard Python, otherwise other.<br>
+Used to make property <code>Project.pjtype</code>.</p>
+</section>
+<section id="solveit-url" class="level4">
+<h4 class="anchored" data-anchor-id="solveit-url">SolveIT URL</h4>
+<p>Returns the SolveIT file browser URL for this project, or <code>None</code> if not in SolveIT.</p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L247" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+</section>
+<section id="solveit_url" class="level3">
+<h3 class="anchored" data-anchor-id="solveit_url">solveit_url</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solveit_url(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="version" class="level3">
+<h3 class="anchored" data-anchor-id="version">Version</h3>
+</section>
+<section id="gh-pages-branch-select" class="level3">
+<h3 class="anchored" data-anchor-id="gh-pages-branch-select">GH Pages branch select</h3>
+<p>For nbdev: - <code>_ensure_pages()</code> configures GitHub Pages to deploy from the <code>gh-pages</code> branch: polls for existence (waiting for Actions), then calls the API.<br>
+- <code>setup_pages()</code> for manual call.</p>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L311" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="project.setup_pages" class="level3">
+<h3 class="anchored" data-anchor-id="project.setup_pages">Project.setup_pages</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> setup_pages(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>Result:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Manually configure GitHub Pages. Useful for debugging.</em></p>
+</section>
+<section id="quarto-darklight" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-darklight">Quarto <code>dark</code>|<code>light</code></h3>
+<p>Quarto feature: auto-select <code>light</code> or <code>dark</code> theme based on user system settings, and display a manual toggle button.</p>
+<ol type="1">
+<li><p>Modify <code>nbs/_quarto.yml</code> to use a <code>light</code>|<code>dark</code> theme pair.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">cosmo</span><span class="kw">,</span><span class="at"> dark.scss</span><span class="kw">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Create <code>nbs/dark.scss</code> to produce a dark themed nbdev style, with readable font colors for code blocks.</p></li>
+</ol>
+<hr>
+<p><a href="https://github.com/1iis/pj/blob/main/pj/core.py#L373" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="project.dark_theme" class="level3">
+<h3 class="anchored" data-anchor-id="project.dark_theme">Project.dark_theme</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dark_theme(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>Result:</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Apply dark mode theme to nbdev docs.</em></p>
+</section>
+</section>
+<section id="todo" class="level2">
+<h2 class="anchored" data-anchor-id="todo">TODO</h2>
+<ul>
+<li><p>We may extend <code>__getattr__</code> to forward to the GitHub API (<code>GhApi</code>), after <code>Git</code> (collisions are rare, hopefully), if/when people want more GH API access.<br>
+Alternatively, we’d build more <code>pj</code> methods to handle the most common use-cases (like PRs, reviews, merge, etc.) right from a project’s dialog.</p></li>
+<li><p>better general outputs</p>
+<ul>
+<li>better messages for <a href="https://1iis.github.io/pj/core.html#project"><code>Project</code></a> methods.</li>
+<li>interactive HTML menu for some of them, with dropdown menus, spoiler folders, info, all the cool stuff.
+<ul>
+<li>fence that with args, we shouldn’t always force such rich stuff.</li>
+</ul></li>
+</ul></li>
+<li><p>richer <code>ls()</code> output with links to all the things: source on GH, doc page, SolveIT file editor, Codespaces, VSCode (local), whatever we can do to make it super nice to use.</p>
+<ul>
+<li>make it optional, with great defaults</li>
+<li>see user.cfg</li>
+</ul></li>
+<li><p>see if we can use L elsewhere now that we’re loading it! :D</p></li>
+<li><p>think about externalizing the whole display part to its own nb</p>
+<ul>
+<li>or even its own module, idk. Depends how this generalizes to what, how we want to use it, etc.</li>
+</ul></li>
+<li><p>user.cfg</p>
+<ul>
+<li>some way to have personal settings for all the things, default values, etc.</li>
+<li>lets you tell pj what you have, what you do, how, etc.</li>
+<li>e.g.&nbsp;<code>py</code> files should open in <code>...</code>, whereas X in Y, etc.</li>
+<li>see if maybe there are nice online tools to use (e.g.&nbsp;nice renderers for file types like ?ML, cool tools to manipulate stuff)</li>
+<li>this isn’t pj specific, so we should have instance-wide user.cfg; then overriding additions of all <code>user.cfg</code> files in subdirs (such that each dir inherits from configs between it and root).</li>
+<li>plug CRAFT and TEMPLATE deploy from central repo/repos (and make that repo, btw!)</li>
+</ul></li>
+<li><p>in-dialog editor! (IDE!!! LOL)</p>
+<ul>
+<li>either an <code>&lt;iframe&gt;</code> if we can help it (with the SolveIT editor, or whatever else we can do)</li>
+<li>or a sol-flow:
+<ol type="1">
+<li>run fn to make cell with file content (type raw, note, code; depending on file format)</li>
+<li>edit cell (optionally dup it)</li>
+<li>run fn to take content from CELL ABOVE and write to file
+<ul>
+<li>optional “backup” arg to copy first to <code>old.file</code> before writing it</li>
+<li>optional output of result (run first fn to make cell below)</li>
+</ul></li>
+<li>optional:
+<ul>
+<li>diff before writing</li>
+<li>diff after writing (if backup)</li>
+<li>use Markdown <code>```</code> to fence and render code properly when not python (alt. to raw)</li>
+<li>clean up: fence with XML raws, confirm, delete. (user-chosen and never surprising)</li>
+</ul></li>
+</ol></li>
+</ul></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/1iis\.github\.io\/pj");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/1iis/pj/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -1,0 +1,172 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "_fbf3cf89 Module setup\n_1d82f33e - Imports\n_aa5fa7c7 - GitHub API\n_d476a2e5 - Verbosity\n_1d1c6a8c - SolveIT domain\n_b5d7fcb4 - Output\n_2d4d75ba – [Result](https://1iis.github.io/pj/core.html#result)\n_50f813c0 – Lines(L)\n_efbdf781 – FileList(Lines)\n_0db6a50a Class [Project](https://1iis.github.io/pj/core.html#project)\n_b93d1a6a Project.new()\n_a17b0188 [Project.sync()](https://1iis.github.io/pj/core.html#project.sync)\n_f9c8ed1e [Project.ship()](https://1iis.github.io/pj/core.html#project.ship)\n_0ecb7e6e [Project.ls()](https://1iis.github.io/pj/core.html#project.ls)\n_e908abfe Helpers\n_9d5246cf - Magic methods\n_9e719823 – __getattr__\n_fd836d45 – __dir__\n_6c8717a7 – _repr_markdown_\n_480bb662 - Detection\n_65aba5ea – Owner, repo\n_846e8d38 – Project type\n_bf0c525a – SolveIT URL\n_1c555637 - Version\n_671c0239 - GH Pages branch select\n_a84a675d - Quarto dark|light\n_294a4299 TODO\nSee also: README, beginner help.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#table-of-contents",
+    "href": "core.html#table-of-contents",
+    "title": "core",
+    "section": "",
+    "text": "_fbf3cf89 Module setup\n_1d82f33e - Imports\n_aa5fa7c7 - GitHub API\n_d476a2e5 - Verbosity\n_1d1c6a8c - SolveIT domain\n_b5d7fcb4 - Output\n_2d4d75ba – [Result](https://1iis.github.io/pj/core.html#result)\n_50f813c0 – Lines(L)\n_efbdf781 – FileList(Lines)\n_0db6a50a Class [Project](https://1iis.github.io/pj/core.html#project)\n_b93d1a6a Project.new()\n_a17b0188 [Project.sync()](https://1iis.github.io/pj/core.html#project.sync)\n_f9c8ed1e [Project.ship()](https://1iis.github.io/pj/core.html#project.ship)\n_0ecb7e6e [Project.ls()](https://1iis.github.io/pj/core.html#project.ls)\n_e908abfe Helpers\n_9d5246cf - Magic methods\n_9e719823 – __getattr__\n_fd836d45 – __dir__\n_6c8717a7 – _repr_markdown_\n_480bb662 - Detection\n_65aba5ea – Owner, repo\n_846e8d38 – Project type\n_bf0c525a – SolveIT URL\n_1c555637 - Version\n_671c0239 - GH Pages branch select\n_a84a675d - Quarto dark|light\n_294a4299 TODO\nSee also: README, beginner help.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#module-setup",
+    "href": "core.html#module-setup",
+    "title": "core",
+    "section": "Module setup",
+    "text": "Module setup\n\nImports\n\n\nGitHub API\nModule-level _default_api: call set_api(GhApi()) once; it’s shared by all Project instances.\n\nsource\n\n\nset_api\n\ndef set_api(\n    api:ghapi.core.GhApi | None\n):\n\nSet the default GhApi instance for all Project instances.\n\nsource\n\n\nget_api\n\ndef get_api(\n    \n)-&gt;ghapi.core.GhApi | None:\n\nGet the current default GhApi instance.\n\n\nVerbosity\nSet verbosity once per dialog: 0=quiet, 1=normal (default), 2=verbose.\n\nsource\n\n\nset_verbosity\n\ndef set_verbosity(\n    v:int\n):\n\n\n\nSolveIT domain\nCached at import for building file browser URLs.\n\n\nOutput\n\nResult\nMethods return a Result instance wrapping the value. - Value is “stdout”, composable. - Display is “stderr” (_repr_markdown_): human status, notebook-friendly. -\n\n\nTo ease composition, Result.__getattr__ forwards to .val.\n\n\nResult is invisible: Project.new(“foo”).sync() chains naturally.\n\n\n\nsource\n\n\n\nResult\n\ndef Result(\n    val, ok:bool=True, msg:str=''\n):\n\nInitialize self. See help(type(self)) for accurate signature.\n\nLines(L)\nBase class for pretty list output. Inherits from L for composition; _repr_markdown_ joins items as lines.\n\nsource\n\n\n\nLines\n\ndef Lines(\n    items:NoneType=None, rest:VAR_POSITIONAL, use_list:bool=False, match:NoneType=None\n):\n\nL subclass with markdown repr that joins lines.\n\nFileList(Lines)\nReturned by ls(). Inherits from L so it’s iterable, indexable, and composable (for f in pj.ls(), .filter(), etc.), while _repr_markdown_ provides rich notebook display with SolveIT links for notebooks.\n\nsource\n\n\n\nFileList\n\ndef FileList(\n    items, base_path, domain:NoneType=None\n):\n\nL subclass with markdown repr that joins lines.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#class-project",
+    "href": "core.html#class-project",
+    "title": "core",
+    "section": "Class Project",
+    "text": "Class Project\nEach Project instance represents a repository. Auto-detects owner and repo from the git remote URL. If set, org overrides owner.\n\n[!TIP] Existing projects are loaded by instanciating the class with a path (p = Project('path/to/repo')).\nNew ones should be created with p = Project.new().\nBoth return a Project ready to use.\n\n\nsource\n\nProject\n\ndef Project(\n    path:str | pathlib.Path, api:ghapi.core.GhApi | None=None, org:str | None=None\n):\n\nManage a project’s lifecycle: init, sync, ship.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#project.new",
+    "href": "core.html#project.new",
+    "title": "core",
+    "section": "Project.new()",
+    "text": "Project.new()\nCreates everything from scratch: GitHub repo via API, local clone, nbdev hooks installed. If nbdev=True, runs scaffolding and applies dark theme. Initial commit, push, and Pages setup.\n\nsource\n\nnew\n\ndef new(\n    cls, name:str, # Repository name\n    path:str | pathlib.Path | None=None, # Local path (defaults to ./name)\n    api:ghapi.core.GhApi | None=None, # GitHub API instance\n    org:str | None=None, # Organization (overrides authenticated user)\n    desc:str | None=None, # Repository description\n    private:bool=True, # Create private repository\n    nbdev:bool=False, # Initialize as nbdev project\n)-&gt;Project:\n\nCreate a new GitHub repo, clone it, and return a Project instance.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#project.sync",
+    "href": "core.html#project.sync",
+    "title": "core",
+    "section": "Project.sync()",
+    "text": "Project.sync()\nnbdev_prepare first for notebooks, then Git add all, commit, pull --rebase, and push.\nWe use rebase for a clean, linear log (no merge commit) whenever there’s no conflict (e.g. one may edit different files on different hosts, and commit all later).\n\nsource\n\nProject.sync\n\ndef sync(\n    msg:str='sync', # Git commit message\n)-&gt;Result:\n\nCommit all, pull –rebase, push. Runs nbdev_prepare if nbdev project.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#project.ship",
+    "href": "core.html#project.ship",
+    "title": "core",
+    "section": "Project.ship()",
+    "text": "Project.ship()\nFull release cycle, auto-detecting strategy by project type. Won’t ship with uncommitted changes unless force=True.\n\n\n\n\n\n\n\n\n\nProject Type\nVersion Bump\nBuild & Upload\nTag & Release\n\n\n\n\nnbdev\nnbdev_bump_version\nnbdev_pypi\ngit tag + ghapi\n\n\npython\nmanual in pyproject.toml\nbuild + twine\ngit tag + ghapi\n\n\nother\nn/a\nn/a\ngit tag + ghapi\n\n\n\n\nsource\n\nProject.ship\n\ndef ship(\n    part:int=2, # Version part to bump: 0=major, 1=minor, 2=patch\n    dry_run:bool=False, # Show what would happen without executing\n    force:bool=False, # Ship even with uncommitted changes\n    pypi:bool=False, # Upload to PyPI\n    quiet:bool=False, # Suppress build output\n)-&gt;Result:\n\nBump version, build, upload to PyPI, tag, and create GitHub release.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#project.ls",
+    "href": "core.html#project.ls",
+    "title": "core",
+    "section": "Project.ls()",
+    "text": "Project.ls()\nList repo files with smart defaults. Shortcuts: 'nbs', 'py'; or pass regex. Notebooks get SolveIT links.\n\nsource\n\nProject.ls\n\ndef ls(\n    pattern:str='', # Shortcut ('nbs', 'py') or regex\n    exclude:list=None, # Paths to exclude\n)-&gt;FileList:\n\nList files in repo, optionally filtered. Returns FileList.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#helpers",
+    "href": "core.html#helpers",
+    "title": "core",
+    "section": "Helpers",
+    "text": "Helpers\n\nMagic methods\n\n__getattr__\nForward unknown method calls to self.g (the Git instance), so p.status() is p.g.status() (i.e. git status).\n\n\n__dir__\nExtend tab-completion to include Git methods. Without this, the editor wouldn’t know p.status exists.\n\n\n_repr_markdown_\nCalled by Jupyter/SolveIT when displaying an object: return a markdown string showing project info.\n\n\n\nDetection\n\nOwner, repo\n_parse_remote() extracts (owner, repo) from the git remote URL, handling both HTTPS and SSH formats.\n\n\nProject type\n_detect_type() checks which config files exist: settings.ini means nbdev, pyproject.toml means standard Python, otherwise other.\nUsed to make property Project.pjtype.\n\n\nSolveIT URL\nReturns the SolveIT file browser URL for this project, or None if not in SolveIT.\n\nsource\n\n\n\nsolveit_url\n\ndef solveit_url(\n    \n):\n\n\n\nVersion\n\n\nGH Pages branch select\nFor nbdev: - _ensure_pages() configures GitHub Pages to deploy from the gh-pages branch: polls for existence (waiting for Actions), then calls the API.\n- setup_pages() for manual call.\n\nsource\n\n\nProject.setup_pages\n\ndef setup_pages(\n    \n)-&gt;Result:\n\nManually configure GitHub Pages. Useful for debugging.\n\n\nQuarto dark|light\nQuarto feature: auto-select light or dark theme based on user system settings, and display a manual toggle button.\n\nModify nbs/_quarto.yml to use a light|dark theme pair.\n    theme:\n      light: cosmo\n      dark: [cosmo, dark.scss]\nCreate nbs/dark.scss to produce a dark themed nbdev style, with readable font colors for code blocks.\n\n\nsource\n\n\nProject.dark_theme\n\ndef dark_theme(\n    \n)-&gt;Result:\n\nApply dark mode theme to nbdev docs.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#todo",
+    "href": "core.html#todo",
+    "title": "core",
+    "section": "TODO",
+    "text": "TODO\n\nWe may extend __getattr__ to forward to the GitHub API (GhApi), after Git (collisions are rare, hopefully), if/when people want more GH API access.\nAlternatively, we’d build more pj methods to handle the most common use-cases (like PRs, reviews, merge, etc.) right from a project’s dialog.\nbetter general outputs\n\nbetter messages for Project methods.\ninteractive HTML menu for some of them, with dropdown menus, spoiler folders, info, all the cool stuff.\n\nfence that with args, we shouldn’t always force such rich stuff.\n\n\nricher ls() output with links to all the things: source on GH, doc page, SolveIT file editor, Codespaces, VSCode (local), whatever we can do to make it super nice to use.\n\nmake it optional, with great defaults\nsee user.cfg\n\nsee if we can use L elsewhere now that we’re loading it! :D\nthink about externalizing the whole display part to its own nb\n\nor even its own module, idk. Depends how this generalizes to what, how we want to use it, etc.\n\nuser.cfg\n\nsome way to have personal settings for all the things, default values, etc.\nlets you tell pj what you have, what you do, how, etc.\ne.g. py files should open in ..., whereas X in Y, etc.\nsee if maybe there are nice online tools to use (e.g. nice renderers for file types like ?ML, cool tools to manipulate stuff)\nthis isn’t pj specific, so we should have instance-wide user.cfg; then overriding additions of all user.cfg files in subdirs (such that each dir inherits from configs between it and root).\nplug CRAFT and TEMPLATE deploy from central repo/repos (and make that repo, btw!)\n\nin-dialog editor! (IDE!!! LOL)\n\neither an &lt;iframe&gt; if we can help it (with the SolveIT editor, or whatever else we can do)\nor a sol-flow:\n\nrun fn to make cell with file content (type raw, note, code; depending on file format)\nedit cell (optionally dup it)\nrun fn to take content from CELL ABOVE and write to file\n\noptional “backup” arg to copy first to old.file before writing it\noptional output of result (run first fn to make cell below)\n\noptional:\n\ndiff before writing\ndiff after writing (if backup)\nuse Markdown ``` to fence and render code properly when not python (alt. to raw)\nclean up: fence with XML raws, confirm, delete. (user-chosen and never surprising)",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "pj",
+    "section": "",
+    "text": "Three methods to create, sync, and release projects:\nWorks with any repo to handle lifecycle with Git, GitHub, and PyPI.\nNotebook-friendly, whether Jupyter,1 nbdev, or SolveIT! 📚💙\nBuilt with fastgit (git operations), ghapi (GitHub API), and fastcore (utilities).",
+    "crumbs": [
+      "pj"
+    ]
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "pj",
+    "section": "Install",
+    "text": "Install\nThis has only been tested in SolveIT, with the nbs/00_core dialog. You may either:\n\nclone this repo and open nbs/00_core (or use pj/core.py)\ndownload nbs/00_core or view the shared dialog, and import it to your SolveIT instance.\n\nMore coming very soon.\n# [coming soon] pip install pj-py",
+    "crumbs": [
+      "pj"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "pj",
+    "section": "Usage",
+    "text": "Usage\nSelect Project &gt; sync to commit+push &gt; release.\n\n0. API setup\nAuthenticate once. All Project instances share the connection.\n# imports not required if you run it from the 00_core dialog in SolveIT.\n# Otherwise:\n#from pj import Project, set_api\n#from ghapi.all import GhApi\n\nset_api(GhApi())\nCheck that it’s fine:\nget_api()\n\n\n1. Target project\nCreate a new project (A), or select an existing repo (B).\n\nA. Create new\np = Project.new(\"mylib\")\n# = Project.new(\"mylib\", path=None, org=None, desc=None, private=True, nbdev=False, verbose=False)\nCreates a private GitHub repo under your user, clones it locally, installs nbdev hooks. org takes the GH handle.\n\n\nB. Select existing repo\np = Project(\"path/to/repo\")\nAuto-detects pj type and owner (settings.ini for nbdev, otherwise pyproject.toml, or other if none).\n\n\n\n2. Sync changes\np.sync()\n# = p.sync(msg=\"sync\")\nStages all, commits with message “sync”, pulls with rebase, pushes.\n\n\n3. Release\np.ship()\n# = p.ship(part=2, dry_run=False, force=False, pypi=False, quiet=False)\nBumps patch version (0.0.X), tags, creates GitHub release. No PyPI upload by default.",
+    "crumbs": [
+      "pj"
+    ]
+  },
+  {
+    "objectID": "index.html#utilities",
+    "href": "index.html#utilities",
+    "title": "pj",
+    "section": "Utilities",
+    "text": "Utilities\nProject. public methods:\n\nls() to list files in the project’s repo.\nsetup_pages() configures GitHub Pages manually.\ndark_theme() applies dark mode to nbdev docs.\nAny unknown method forwards to git.",
+    "crumbs": [
+      "pj"
+    ]
+  },
+  {
+    "objectID": "index.html#troubleshooting",
+    "href": "index.html#troubleshooting",
+    "title": "pj",
+    "section": "Troubleshooting",
+    "text": "Troubleshooting\nPath errors\nReassign p = Project(\"correct/path\") to fix the current working directory (cwd).\nRestart kernel first if it still fails.\nRebase conflicts\np.g('rebase', '--abort') to start over, or resolve and continue.",
+    "crumbs": [
+      "pj"
+    ]
+  },
+  {
+    "objectID": "index.html#api-summary",
+    "href": "index.html#api-summary",
+    "title": "pj",
+    "section": "API Summary",
+    "text": "API Summary\nCreate:\np = Project.new(\"mylib\") # Private repo\np = Project.new(\n    \"mylib\",\n    org=\"myorg\",         # GH Organization\n    desc=\"Cool lib\"      # About\n    private=False,       # Public repository\n    nbdev=True           # nbdev/Quarto GH Pages w. light/dark toggle\n)\nExisting:\np = Project('mylib')     # [cwd/]'relative/path' or '/absolute/path'\nSync:\np.sync()                 # Commit all, rebase, push\np.sync(\"Fix bug #42\")    # Commit message (default: 'sync')\nRelease:\np.ship()                 # Bump patch, tag, GitHub release\np.ship(part=1)           # Bump minor\np.ship(pypi=True)        # Include PyPI upload\np.ship(dry_run=True)     # Preview without doing anything\nUtilities:\np.ls()                   # List files (takes regex str)\np.ls('nbs')              # List notebooks ('py' for Python files)\np.setup_pages()          # Configure GitHub Pages manually\np.dark_theme()           # Enable Quarto dark mode w. toggle button (nbdev docs)\np.status()               # Git methods forward to p.g (thus fastgit.Git)",
+    "crumbs": [
+      "pj"
+    ]
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "pj",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nJupyter+Quarto specific QoL to come soon™↩︎",
+    "crumbs": [
+      "pj"
+    ]
+  }
+]
