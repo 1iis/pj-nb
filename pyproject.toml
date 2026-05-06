@@ -1,11 +1,31 @@
 [build-system]
-requires = ["setuptools>=64.0"]
+requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name="pj-py"
-requires-python=">=3.9"
-dynamic = [ "keywords", "description", "version", "dependencies", "optional-dependencies", "readme", "license", "authors", "classifiers", "entry-points", "scripts", "urls"]
+name = "pj-nb"
+dynamic = ["version"]
+description = "SolveIT-friendly tool to make project repos a bit easier to manage"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [{name = "Kit Ledru", email = "kit@ledru.dev"}]
+keywords = ['nbdev', 'jupyter', 'notebook', 'python']
+classifiers = ["Natural Language :: English", "Intended Audience :: Developers", "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only"]
+dependencies = []
 
-[tool.uv]
-cache-keys = [{ file = "pyproject.toml" }, { file = "settings.ini" }, { file = "setup.py" }]
+[project.urls]
+Repository = "https://github.com/1iis/pj-nb"
+Documentation = "https://1iis.github.io/pj-nb"
+
+[project.entry-points.nbdev]
+pj_nb = "pj_nb._modidx:d"
+
+[tool.setuptools.dynamic]
+version = {attr = "pj_nb.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["pj_nb"]
+
+[tool.nbdev]
+title = 'pj-nb'

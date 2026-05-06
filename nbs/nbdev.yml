@@ -2,8 +2,8 @@ project:
   output-dir: _docs
 
 website:
-  title: "pj-py"
-  site-url: "https://1iis.github.io/pj"
+  title: "pj-nb"
+  site-url: "https://1iis.github.io/pj-nb"
   description: "SolveIT-friendly tool to make project repos a bit easier to manage"
   repo-branch: main
-  repo-url: "https://github.com/1iis/pj"
+  repo-url: "https://github.com/1iis/pj-nb"
